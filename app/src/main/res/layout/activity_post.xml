@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.juliod07_laptop.firebasecurso.views.PostActivity">
+
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/addphoto" />
+
+    <EditText
+        android:id="@+id/title_of_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/input_outline4_stpaccount"
+        android:hint="Titulo de imagen..."
+        android:padding="7dp"
+        android:singleLine="true"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <EditText
+        android:id="@+id/desc_of_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/input_outline4_stpaccount"
+        android:hint="Descripcion.."
+        android:padding="7dp"
+        android:singleLine="true"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="62dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Postear"
+        android:textColor="@color/white" />
+</LinearLayout>

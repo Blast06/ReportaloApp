@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Reportalo</string>
+    <string name="facebook_app_id">1426923924058692</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="copy_right">Copyrights © %1$d</string>
+    <string name="pasajero">Pasajero.otf</string>
+    <string name="raleway">RalewayThin.ttf</string>
+    <string name="about_description">Reportalo es una app creada para reportar malas conductas al volante por los dominicanos</string>
+</resources>

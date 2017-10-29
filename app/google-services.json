@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "488165657910",
+    "firebase_url": "https://fir-curso-37ff3.firebaseio.com",
+    "project_id": "fir-curso-37ff3",
+    "storage_bucket": "fir-curso-37ff3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488165657910:android:8edc2ea65307f19d",
+        "android_client_info": {
+          "package_name": "com.example.juliod07_laptop.firebasecurso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "488165657910-fsrgkqfhqa01obopijs5h1v6tdbshbv5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.juliod07_laptop.firebasecurso",
+            "certificate_hash": "5ea850374389116da4dfac1ce9262baa888c5760"
+          }
+        },
+        {
+          "client_id": "488165657910-eg9cvmea58mse8i2563efa4521h5std1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTPpZzDgn_TO2JvxdRcaGrU67vW8dzXIk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "488165657910-eg9cvmea58mse8i2563efa4521h5std1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
