@@ -18,7 +18,7 @@
     </android.support.v7.widget.RecyclerView>
 
     <com.github.clans.fab.FloatingActionMenu
-        android:id="@+id/menu"
+        android:id="@+id/fabMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -64,12 +64,21 @@
         fab:menu_fab_hide_animation="@anim/hide_to_bottom">
 
         <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/addpost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/post"
+            fab:fab_size="mini"
+            fab:fab_label="Publicar" />
+
+        <com.github.clans.fab.FloatingActionButton
             android:id="@+id/profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/profile_icon"
             fab:fab_size="mini"
             fab:fab_label="ir a perfil" />
+
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/logout"
             android:layout_width="wrap_content"
@@ -78,6 +87,7 @@
             fab:fab_size="mini"
             fab:fab_label="cerrar sesion"
             />
+
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/about"

@@ -1,15 +1,15 @@
 package com.example.juliod07_laptop.firebasecurso.views;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.juliod07_laptop.firebasecurso.AsyncTasks;
 import com.example.juliod07_laptop.firebasecurso.R;
 import com.example.juliod07_laptop.firebasecurso.models.Reports;
+import com.facebook.login.LoginManager;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseUsers;
     private boolean isLikeChecked = false;
     private DatabaseReference mDatabase4Like;
-    private DrawerLayout drawer;
-    private FloatingActionButton mFabProfile,mFabLogout,mFabAbout;
+    private FloatingActionButton mFabProfile,mFabLogout,mFabAbout, mFabAddPost;
 
 
 
@@ -52,29 +52,38 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_content);
-       /* Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);*/
-
-        /*drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        toggle.syncState();
 
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        NavigationView navigationViewRight = (NavigationView) findViewById(R.id.nav_view_right);
-        navigationViewRight.setNavigationItemSelectedListener(this);
-        navigationView.setNavigationItemSelectedListener(this);
-*/
+        mFabAddPost = findViewById(R.id.addpost);
+        mFabProfile = findViewById(R.id.profile);
+        mFabLogout = findViewById(R.id.logout);
+        mFabAbout = findViewById(R.id.about);
 
-        mFabProfile = (FloatingActionButton)findViewById(R.id.profile);
-        mFabLogout = (FloatingActionButton)findViewById(R.id.logout);
-        mFabAbout = (FloatingActionButton)findViewById(R.id.about);
+
+
+        mFabProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,ProfileActivity.class));
+
+
+
+            }
+        });
+        mFabAddPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,PostActivity.class));
+                finish();
+
+            }
+        });
 
         mFabLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 logout();
+
             }
         });
 
@@ -82,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,AboutActivity.class));
+                finish();
             }
         });
 
@@ -216,36 +226,9 @@ public class MainActivity extends AppCompatActivity {
         reportList.setAdapter(firebaseRecyclerAdapter);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-   /* @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_right_menu) {
-            if (drawer.isDrawerOpen(GravityCompat.END)) {
-                drawer.closeDrawer(GravityCompat.END);
-            } else {
-                drawer.openDrawer(GravityCompat.END);
-            }
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }*/
-
-
-
     private void logout() {
-        mAuth.signOut();
+        mAuth.signOut(); //logout from firebase
+        LoginManager.getInstance().logOut(); //logout from fb api
 
     }
 
@@ -277,42 +260,30 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        /*
+        startActivity(new Intent(MainActivity.this,MainActivity.class));*/
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else if (drawer.isDrawerOpen(GravityCompat.END)) {
-            drawer.closeDrawer(GravityCompat.END);
-        } else {
-            super.onBackPressed();
-        }
+        new AlertDialog.Builder(MainActivity.this)
+                .setTitle("Reportalo App")
+                .setMessage("Seguro que quieres salir?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        ActivityCompat.finishAffinity(MainActivity.this);
+                        finish();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+
+
+
 
     }
-/*
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }*/
 
     public static class ReportViewHolder extends RecyclerView.ViewHolder {
         View mView;

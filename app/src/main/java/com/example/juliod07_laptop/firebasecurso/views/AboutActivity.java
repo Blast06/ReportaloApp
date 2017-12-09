@@ -1,5 +1,6 @@
 package com.example.juliod07_laptop.firebasecurso.views;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -83,4 +84,9 @@ public class AboutActivity extends AppCompatActivity {
         }
     }
 
+    public void onBackPressed() {
+        startActivity(new Intent(AboutActivity.this,MainActivity.class));
+        finish();
+
+    }
 }

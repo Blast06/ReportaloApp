@@ -165,6 +165,11 @@ public class PostActivity extends AppCompatActivity {
 
         }
     }
+    public void onBackPressed() {
+        startActivity(new Intent(PostActivity.this,MainActivity.class));
+        finish();
+
+    }
 
 
 }
